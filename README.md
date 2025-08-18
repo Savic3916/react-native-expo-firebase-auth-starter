@@ -1,50 +1,31 @@
-# Welcome to your Expo app 👋
+# Expo + Firebase Auth Starter 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🚀 Minimal Expo + Firebase Authentication setup with Email/Password, Google, and Facebook signup & login.
 
-## Get started
+## Features
+- 🔐 Email & Password Authentication
+- 🌐 Google and Facebook Authentication
+- 🎨 Clean and modern UI
 
-1. Install dependencies
+## Getting Started
+1. Clone or fork this repo
+2. Install dependencies: `npm install`
+3. Create a `.env` file and add your Firebase config following Expo’s environment rules: [Visit Expo Docs](https://docs.expo.dev/guides/environment-variables/)
+4. Start the app: `npx expo start`
 
-   ```bash
-   npm install
-   ```
+## Note
+This starter is built with Expo, but all authentication logic is contained in the `auth/` folder — so you can easily reuse it in non-Expo React Native projects.
 
-2. Start the app
+⭐ Don’t forget to leave a star if this helped you!
 
-   ```bash
-   npx expo start
-   ```
+## Screenshots
 
-In the output, you'll find options to open the app in a
+<p align="center">
+  <img src="./assets/images/firstScreen.PNG" width="30%" alt="First Screen"/>
+  <img src="./assets/images/registerscreen.PNG" width="30%" alt="Register Screen"/>
+  <img src="./assets/images/loginScreen.PNG" width="30%" alt="Login Screen"/>
+</p>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## License
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
