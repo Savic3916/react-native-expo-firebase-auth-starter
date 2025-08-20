@@ -15,7 +15,7 @@ export default function IconButton({ title, imageSource }) {
       <Text style={styles.title}>{title}</Text>
     </Pressable>
   );
-};
+}
 
 const shadow = Platform.select({
   android: { elevation: 4 },

@@ -1,9 +1,16 @@
 import { Platform, Pressable, StyleSheet, Text } from "react-native";
 import { Colors } from "../constant/Color";
 
-export default function Button({ title }) {
+export default function Button({ title, onPress }) {
   return (
-    <Pressable style={({ pressed}) => pressed? [styles.buttonContainer, styles.pressed] : styles.buttonContainer }>
+    <Pressable
+      style={({ pressed }) =>
+        pressed
+          ? [styles.buttonContainer, styles.pressed]
+          : styles.buttonContainer
+      }
+      onPress={onPress}
+    >
       <Text style={styles.title}>{title}</Text>
     </Pressable>
   );
@@ -27,7 +34,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     marginVertical: 10,
-    ...shadow
+    ...shadow,
   },
   title: {
     color: Colors.white,
@@ -37,5 +44,5 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.5,
-  }
+  },
 });

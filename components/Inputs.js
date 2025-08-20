@@ -12,14 +12,14 @@ export default function Inputs({ myConfig, title }) {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: '2%',
+    marginBottom: "2%",
   },
   inputs: {
     borderWidth: 1.5,
     borderColor: Colors.gray,
     borderRadius: 8,
     padding: 10,
-    marginTop: '1%',
+    marginTop: "1%",
   },
   title: {
     fontSize: 16,
