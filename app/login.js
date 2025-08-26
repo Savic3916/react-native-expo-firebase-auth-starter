@@ -5,14 +5,15 @@ import EasyDemacation from "../components/EasyDemacation";
 import IconButton from "../components/IconButton";
 import Inputs from "../components/Inputs";
 import { Colors } from "../constant/Color";
+import { useSession } from "../FIREBASE/auth-router/ctx";
 
 export default function login() {
+  const {login} = useSession();
+
   const [inputs, setInputs] = useState({
     email: { value: "", isValid: true },
     password: { value: "", isValid: true },
   });
-
-  console.log(inputs);
 
   // FOR CHANGING AND BINDING TEXT IN THE TEXTINPUT
   function changeTextHandler(inputIdentifier, enteredText) {
@@ -42,25 +43,23 @@ export default function login() {
       userInput.password.match(/[a-z]/) != null && //must contain a letter
       userInput.password.match(/[!@#$%^&*()_\-+{}|\:;"'<>.?/~]/) != null; //must include a sspecial character
 
-    // is email is invalid
-    if (!emaiIsValid) {
+    // is both email and password is invalid
+    if (!emaiIsValid || !passwordIsValid) {
       setInputs((currentInputs) => {
         return {
-          ...currentInputs,
-          ["email"]: { value: userInput.email, isValid: false },
+          email: { value: currentInputs.email.value, isValid: emaiIsValid },
+          password: {
+            value: currentInputs.password.value,
+            isValid: passwordIsValid,
+          },
         };
       });
+      return;
     }
 
-    //if password is invalid
-    if (!passwordIsValid) {
-      setInputs((currentInputs) => {
-        return {
-          ...currentInputs,
-          ["password"]: { value: userInput.password, isValid: false },
-        };
-      });
-    }
+    // if both email and password are valid
+    login(userInput.email, userInput.password);
+    // router.push('/(protected)')
   }
 
   return (
@@ -68,7 +67,7 @@ export default function login() {
       <Inputs
         title="Email"
         myConfig={{
-          placeholder: "e.g: savic3916@gmail.com",
+          placeholder: "e.g: example123@gmail.com",
           placeholderTextColor: Colors.gray,
           onChangeText: (text) => changeTextHandler("email", text),
           value: inputs.email.value,
@@ -97,10 +96,12 @@ export default function login() {
       <IconButton
         title="Login With Google     "
         imageSource={require("../assets/images/google.png")}
+        onPress={() => console.log("Pressed")}
       />
       <IconButton
         title="Login With Facebook"
         imageSource={require("../assets/images/communication.png")}
+        onPress={() => console.log("Pressed")}
       />
     </View>
   );

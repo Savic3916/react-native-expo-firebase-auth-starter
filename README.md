@@ -14,7 +14,7 @@
 4. Start the app: `npx expo start`
 
 ## Note
-This starter is built with Expo, but all authentication logic is contained in the `auth/` folder — so you can easily reuse it in non-Expo React Native projects.
+This starter is built with Expo, but all authentication logic is contained in the `FIREBASE/` folder — so you can easily reuse it in non-Expo React Native projects.
 
 ⭐ Don’t forget to leave a star if this helped you!
 
