@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSession } from "../FIREBASE/auth-router/ctx";
 import Button from "../components/Button";
 import EasyDemacation from "../components/EasyDemacation";
 import IconButton from "../components/IconButton";
@@ -7,12 +8,13 @@ import Inputs from "../components/Inputs";
 import { Colors } from "../constant/Color";
 
 export default function SignUp() {
+  const { signUp } = useSession();
+
   const [inputs, setInputs] = useState({
     email: { value: "", isValid: true },
     password: { value: "", isValid: true },
     confirmPassword: { value: "", isValid: true },
   });
-  console.log(inputs);
 
   // FOR CHANGING AND BINDING TEXT IN THE TEXTINPUT
   function changeTextHandler(inputIdentifier, enteredText) {
@@ -50,38 +52,26 @@ export default function SignUp() {
     userInput.password === userInput.confirmPassword; //must be the same as the password
 
     // is email is invalid
-    if (!emaiIsValid) {
+    if (!emaiIsValid || !passwordIsValid || !confirmPasswordIsValid) {
       setInputs((currentInputs) => {
         return {
-          ...currentInputs,
-          ["email"]: { value: userInput.email, isValid: false },
-        };
-      });
-    }
-
-    //if password is invalid
-    if (!passwordIsValid) {
-      setInputs((currentInputs) => {
-        return {
-          ...currentInputs,
-          ["password"]: { value: userInput.password, isValid: false },
-        };
-      });
-    }
-    //if conirmPassword is invalid
-    if (!confirmPasswordIsValid) {
-      setInputs((currentInputs) => {
-        return {
-          ...currentInputs,
-          ["confirmPassword"]: {
-            value: userInput.confirmPassword,
-            isValid: false,
+          email: { value: currentInputs.email.value, isValid: emaiIsValid },
+          password: {
+            value: currentInputs.password.value,
+            isValid: passwordIsValid,
+          },
+          confirmPassword: {
+            value: currentInputs.confirmPassword.value,
+            isValid: confirmPasswordIsValid,
           },
         };
       });
+      return;
     }
 
-    // if email, password, and confirmPassword is correct
+    // if email, password, and confirmPassword are valid
+    signUp(userInput.email, userInput.password);
+    // router.replace("/(protected)");
   }
 
   return (
@@ -89,7 +79,7 @@ export default function SignUp() {
       <Inputs
         title="Email"
         myConfig={{
-          placeholder: "e.g: savic3916@gmail.com",
+          placeholder: "e.g: example123@gmail.com",
           placeholderTextColor: Colors.gray,
           onChangeText: (text) => changeTextHandler("email", text),
           value: inputs.email.value,
@@ -133,10 +123,12 @@ export default function SignUp() {
       <IconButton
         title="Login With Google    "
         imageSource={require("../assets/images/google.png")}
+        onPress={() => console.log("Pressed")}
       />
       <IconButton
         title="Login With Facebook"
         imageSource={require("../assets/images/communication.png")}
+        onPress={() => console.log("Pressed")}
       />
     </View>
   );
@@ -147,7 +139,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 10,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.white,
   },
   input: {
     padding: 10,
