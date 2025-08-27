@@ -8,7 +8,7 @@ import { Colors } from "../constant/Color";
 import { useSession } from "../FIREBASE/auth-router/ctx";
 
 export default function login() {
-  const {login} = useSession();
+  const { login } = useSession();
 
   const [inputs, setInputs] = useState({
     email: { value: "", isValid: true },
@@ -58,8 +58,8 @@ export default function login() {
     }
 
     // if both email and password are valid
+    // FIREBASE LOGOUT API
     login(userInput.email, userInput.password);
-    // router.push('/(protected)')
   }
 
   return (

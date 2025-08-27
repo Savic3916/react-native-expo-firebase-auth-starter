@@ -10,7 +10,7 @@
 ## Getting Started
 1. Clone or fork this repo
 2. Install dependencies: `npm install`
-3. Create a `.env` file and add your Firebase config following Expo’s environment rules: [Visit Expo Docs](https://docs.expo.dev/guides/environment-variables/)
+3. Create a `.env` file and add your Firebase API_KEY following Expo’s environment rules: [Visit Expo Docs](https://docs.expo.dev/guides/environment-variables/)
 4. Start the app: `npx expo start`
 
 ## Note

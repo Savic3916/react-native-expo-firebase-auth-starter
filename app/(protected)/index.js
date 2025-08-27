@@ -3,7 +3,11 @@ import Button from "../../components/Button";
 import { useSession } from "../../FIREBASE/auth-router/ctx";
 
 export default function Welcome() {
+
+  // FIREBASE LOGOUT API
   const { logout } = useSession();
+
+  // LOGOUT BUTTON HANDLER
   function logoutButtonHandler() {
     logout();
   }

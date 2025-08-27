@@ -70,8 +70,8 @@ export default function SignUp() {
     }
 
     // if email, password, and confirmPassword are valid
+    // FIREBASE LOGOUT API
     signUp(userInput.email, userInput.password);
-    // router.replace("/(protected)");
   }
 
   return (

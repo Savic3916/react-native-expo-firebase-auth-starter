@@ -30,14 +30,14 @@ export function useSession() {
   if (!value) {
     throw new Error("useSession must be wrapped in a <SessionProvider />");
   }
-
   return value;
 }
-console.log(auth.currentUser);
 
 export function SessionProvider({ children }: PropsWithChildren) {
   const [[isLoading, session], setSession] = useStorageState("session");
+  console.log(auth.currentUser);
 
+  // KNOWS IF A USER IS LOGGED IN TO SET OR REFRESH A TOKEN
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -49,6 +49,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
     });
     return unsubscribe;
   }, []);
+
   return (
     <AuthContext.Provider
       value={{
