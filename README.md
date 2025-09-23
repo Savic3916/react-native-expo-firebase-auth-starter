@@ -10,11 +10,11 @@
 ## Getting Started
 1. Clone or fork this repo
 2. Install dependencies: `npm install`
-3. Create a `.env` file and add your Firebase config following Expo’s environment rules: [Visit Expo Docs](https://docs.expo.dev/guides/environment-variables/)
+3. Create a `.env` file and add your FIREBASE_API_KEY and FIREBASE_CONFIG following Expo’s environment rules: [Visit Expo Docs](https://docs.expo.dev/guides/environment-variables/)
 4. Start the app: `npx expo start`
 
 ## Note
-This starter is built with Expo, but all authentication logic is contained in the `auth/` folder — so you can easily reuse it in non-Expo React Native projects.
+This starter is built with Expo, but all authentication logic is contained in the `FIREBASE/` folder — so you can easily reuse it in non-Expo React Native projects.
 
 ⭐ Don’t forget to leave a star if this helped you!
 

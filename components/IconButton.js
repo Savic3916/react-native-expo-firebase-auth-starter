@@ -2,7 +2,7 @@ import { Image, Platform, Pressable, StyleSheet, Text } from "react-native";
 import { Colors } from "../constant/Color";
 
 // this component is used to create the Google and Facebook Button
-export default function IconButton({ title, imageSource }) {
+export default function IconButton({ title, imageSource, onPress }) {
   return (
     <Pressable
       style={({ pressed }) =>
@@ -10,8 +10,9 @@ export default function IconButton({ title, imageSource }) {
           ? [styles.buttonContainer, styles.pressed]
           : styles.buttonContainer
       }
+      onPress={onPress}
     >
-      <Image style={styles.image} source={imageSource} />
+      <Image style={styles.image} source={imageSource} resizeMode="contain"/>
       <Text style={styles.title}>{title}</Text>
     </Pressable>
   );
